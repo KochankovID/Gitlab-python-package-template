@@ -1,0 +1,73 @@
+repos:
+  # Trailing-whitespace
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.2.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+  # Pyupgrade
+  - repo: https://github.com/asottile/pyupgrade
+    rev: v2.32.1
+    hooks:
+      - id: pyupgrade
+        args: [--py38-plus]
+  # Prettier
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: v2.6.2
+    hooks:
+      - id: prettier
+        args:
+          - --ignore-path
+          - .prettierignore
+        types_or: [markdown, dockerfile, dockerignore, gitignore, yaml]
+  # Isort
+  - repo: https://github.com/pycqa/isort
+    rev: 5.10.1
+    hooks:
+      - id: isort
+        name: isort (python)
+  # Black
+  - repo: https://github.com/psf/black.git
+    rev: 22.3.0
+    hooks:
+      - id: black
+        name: black
+  # Flake 8
+  - repo: https://github.com/pycqa/flake8
+    rev: 4.0.1
+    hooks:
+      - id: flake8
+        args:
+          - --max-line-length=120
+  # Mypy
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v0.960
+    hooks:
+      - id: mypy
+        language_version: python
+        args:
+          - --namespace-packages
+          - --explicit-package-bases
+          - --ignore-missing-imports
+  # Pylint
+  - repo: https://github.com/pycqa/pylint
+    rev: v2.14.0-b1
+    hooks:
+      - id: pylint
+        exclude: tests/functional/|tests/input|tests(/\w*)*data/|doc/
+  # Docstring formatter
+  - repo: https://github.com/DanielNoord/pydocstringformatter
+    rev: v0.6.0
+    hooks:
+      - id: pydocstringformatter
+  # Autoflake
+  - repo: https://github.com/myint/autoflake
+    rev: v1.4
+    hooks:
+      - id: autoflake
+        args:
+          - --in-place
+          - --remove-all-unused-imports
+          - --expand-star-imports
+          - --remove-duplicate-keys
+          - --remove-unused-variables

@@ -1,0 +1,107 @@
+stages:
+  - lint # Check package with linters
+  - test # Run test
+  - test-build # Run test build
+  - deploy-version # Deploy and create version tag
+  - deploy-package # Deploy package
+
+# Official language image. Look for the different tagged releases at:
+# https://hub.docker.com/r/library/python/tags/
+image: python:latest
+
+variables:
+  PIP_CACHE_DIR: $CI_PROJECT_DIR/.cache/pip # Set folder in working dir for cache
+  PRE_COMMIT_HOME: ${CI_PROJECT_DIR}/.cache/pre-commit # Set folder in working dir for cache
+  TOX_TESTENV_PASSENV: PIP_CACHE_DIR PRE_COMMIT_HOME # For cache the dependencies
+  bot: "semantic-release <semantic-release>" # Name of the bot who make commits with version bump
+
+# Runs on 1) merge request in main branch
+#         2) commit in main branch
+lint:
+  script:
+    - echo "This is the lint stage"
+    - pip install tox
+    - echo "Tox installed"
+    - export PRE_COMMIT_HOME && tox -e lint
+  cache:
+    paths:
+      - ${PIP_CACHE_DIR}
+      - .tox
+      - ${PRE_COMMIT_HOME}
+  rules:
+    - if: ($CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == $CI_DEFAULT_BRANCH) && $CI_COMMIT_AUTHOR != $bot
+
+# Runs on 1) merge request in main branch
+#         2) commit in main branch
+test:
+  script:
+    - echo "This is the test stage"
+    - pip install tox
+    - echo "Tox installed"
+    - tox -e py38,py39,py310
+  cache:
+    paths:
+      - ${PIP_CACHE_DIR}
+      - .tox
+  artifacts:
+    paths:
+      - .reports/py39-report.html
+      - .reports/py310-report.html
+    expire_in: 1 week
+  rules:
+    - if: ($CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == $CI_DEFAULT_BRANCH) && $CI_COMMIT_AUTHOR != $bot
+
+# Runs on 1) merge request in main branch
+#         2) commit in main branch
+test-build:
+  script:
+    - echo "This is the test build package stage"
+    - pip install poetry
+    - echo "Poetry installed"
+    - poetry build
+    - echo "The package was build"
+  cache:
+    paths:
+      - ${PIP_CACHE_DIR}
+  rules:
+    - if: ($CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == $CI_DEFAULT_BRANCH) && $CI_COMMIT_AUTHOR != $bot
+
+# Runs on 1) commit not from bot in main branch (not runs on version bump)
+deploy-version:
+  needs:
+    - lint
+    - test
+    - test-build
+  script:
+    - echo "This is the deploy-version version stage"
+    - pip install poetry
+    - echo "Poetry installed"
+    - pip install python-semantic-release
+    - echo "Python-semantic-release installed"
+    - git config --global user.email "semantic-release@gmail.com"
+    - git config --global user.name "semantic-release"
+    - echo "Set semantic-release git credentials"
+    - export GL_TOKEN && semantic-release publish
+    - echo "Publishing version done!"
+  cache:
+    paths:
+      - ${PIP_CACHE_DIR}
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH && $CI_COMMIT_AUTHOR != $bot
+
+# Runs on 1) commit from bot in main branch (version bump)
+deploy-package:
+  script:
+    - echo "This is the build package stage"
+    - pip install poetry
+    - echo "Poetry installed"
+    - poetry build
+    - echo "The package was build"
+    - poetry config repositories.gitlab $PAKAGE_REGISTRY
+    - poetry publish --repository gitlab -u $DEPLOY_TOKEN_NAME -p $DEPLOY_TOKEN
+    - echo "Publishing package done!"
+  cache:
+    paths:
+      - ${PIP_CACHE_DIR}
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH && $CI_COMMIT_AUTHOR == $bot

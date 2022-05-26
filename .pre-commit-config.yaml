@@ -1,0 +1,16 @@
+repos:
+  # Trailing-whitespace
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.2.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+  # Prettier
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: v2.6.2
+    hooks:
+      - id: prettier
+        args:
+          - --ignore-path
+          - .prettierignore
+        types_or: [markdown, dockerfile, dockerignore, gitignore, yaml]
