@@ -1,6 +1,6 @@
 # :package: {{cookiecutter.package_name}}
 
-{{cookiecutter.package_registry_repository_url}}
+{{cookiecutter.description}}
 
 ---
 
