@@ -3,6 +3,7 @@
   "description": "I will write it later =)",
   "author": "Ilya Kochankov",
   "python_version": "^3.8",
+  "package_registry_repository_name": "python-package-index",
   "package_registry_repository_id": "36391082",
   "gitlab_host": "gitlab.com"
 }
