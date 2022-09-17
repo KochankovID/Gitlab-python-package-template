@@ -38,7 +38,7 @@ hvcs = "gitlab"
 build_command = "poetry build"
 upload_to_pypi = false
 repository = "gitlag"
-repository_url = "https://gitlab.com/api/v4/projects/{{cookiecutter.package_registry_repository_id}}/packages/pypi"
+repository_url = "https://{{cookiecutter.gitlab_host}}/api/v4/projects/{{cookiecutter.package_registry_repository_id}}/packages/pypi"
 
 [tool.pylint.'MASTER']
 ignore = ".venv, Dockerfile, docker-compose.yml, docker-compose-test.yml, Procfile, README.md, poetry.lock, pyproject.toml, config.yml"
