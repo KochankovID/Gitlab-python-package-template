@@ -9,7 +9,7 @@
 ### 🐍 PIP
 
 ```bash
-pip install {{cookiecutter.package_name}} --extra-index-url https://__token__:<your_personal_token>@{{gitlab_host}}/api/v4/projects/{{cookiecutter.package_registry_repository_id}}/packages/pypi/simple
+pip install {{cookiecutter.package_name}} --extra-index-url https://__token__:<your_personal_token>@{{cookiecutter.gitlab_host}}/api/v4/projects/{{cookiecutter.package_registry_repository_id}}/packages/pypi/simple
 ```
 
 where:
@@ -21,7 +21,7 @@ where:
 > full example:
 >
 > ```bash
-> pip install {{cookiecutter.package_name}} --extra-index-url https://Ilya:5WJpU5v_ms53z6xDt_nG@{{gitlab_host}}/api/v4/projects/{{cookiecutter.package_registry_repository_id}}/packages/pypi/simple
+> pip install {{cookiecutter.package_name}} --extra-index-url https://Ilya:5WJpU5v_ms53z6xDt_nG@{{cookiecutter.gitlab_host}}/api/v4/projects/{{cookiecutter.package_registry_repository_id}}/packages/pypi/simple
 > ```
 
 ### 🍯 Poetry
@@ -29,7 +29,7 @@ where:
 #### 1. Add gitlab repository to your poetry config
 
 ```bash
-poetry config repositories.gitlab https://{{gitlab_host}}/api/v4/projects/{{cookiecutter.package_registry_repository_id}}/packages/pypi/simple --local
+poetry config repositories.gitlab https://{{cookiecutter.gitlab_host}}/api/v4/projects/{{cookiecutter.package_registry_repository_id}}/packages/pypi/simple --local
 ```
 
 #### 2. Add gitlab personal access token to your poetry config
@@ -54,7 +54,7 @@ poetry config http-basic.gitlab gitlab-ci-token 5WJpU5v_ms53z6xDt_nG
 ```toml
 [[tool.poetry.source]]
 name = "gitlab"
-url = "https://{{gitlab_host}}/api/v4/projects/{{cookiecutter.package_registry_repository_id}}/packages/pypi/simple/"
+url = "https://{{cookiecutter.gitlab_host}}/api/v4/projects/{{cookiecutter.package_registry_repository_id}}/packages/pypi/simple/"
 ```
 
 #### 4. Install package
