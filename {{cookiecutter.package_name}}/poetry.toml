@@ -1,0 +1,3 @@
+[repositories]
+[repositories.gitlab]
+url = "https://{{gitlab_host}}/api/v4/projects/{{cookiecutter.package_registry_repository_id}}/packages/pypi"

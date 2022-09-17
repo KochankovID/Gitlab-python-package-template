@@ -1,33 +1,64 @@
-# :tophat: Contributing
+# 🎩 Contributing
 
 ---
 
 ## Setting up for development
 
-### :snake: Pip
+### 🐍 Pip
 
-- `pip install -r requirements.txt`
+```bash
+pip install -r requirements.txt
+```
 
-### :honey_pot: Poetry
+### 🍯 Poetry
 
-- `poetry install`
-- `poetry shell`
+```bash
+poetry install
+poetry shell
+```
 
-## :runner: Run
+## 🏃 Run
 
-### :white_check_mark: Run all tests (with py3.9 and py3.10) and linters
+### ✔️ Run all tests (with py3.9 and py3.10) and linters
 
-`tox`
+```bash
+tox
+```
 
-### :heavy_check_mark: Run only pytest
+### ✅ Run only pytest
 
-`pytest`
+```bash
+pytest
+```
 
-### :100: Run only linters
+### 💯 Run only linters
 
-`tox -e lint`
+```bash
+tox -e lint
+```
 
-### :trident: Run pre-commit hooks
+### 🔱 Run pre-commit hooks
 
-- `pre-commit install`
-- `pre-commit run --all-files`
+```bash
+pre-commit install
+pre-commit run -a
+```
+
+## 🚀 Deploy to GitLab Package Registry
+
+### Add gitlab deploy token to your poetry config
+
+```bash
+poetry config http-basic.gitlab gitlab-ci-token <your_personal_token> --local
+```
+
+where:
+
+- <your_personal_token> - is your Deploy tokens with access to
+  read_package_registry (for example 5WJpU5v_ms53z6xDt_nG)
+
+full example:
+
+```bash
+poetry config http-basic.gitlab gitlab-ci-token 5WJpU5v_ms53z6xDt_nG
+```

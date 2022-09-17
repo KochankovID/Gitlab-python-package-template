@@ -1,7 +1,8 @@
 {
   "package_name": "funccacher",
   "description": "I will write it later =)",
-  "author": "Vitalii Krasnov",
+  "author": "Ilya Kochankov",
   "python_version": "^3.8",
-  "package_registry_repository_id": "36391082"
+  "package_registry_repository_id": "36391082",
+  "gitlab_host": "gitlab.com"
 }

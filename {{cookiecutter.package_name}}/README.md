@@ -1,14 +1,16 @@
-# :package: {{cookiecutter.package_name}}
+# 📦 {{cookiecutter.package_name}}
 
 {{cookiecutter.description}}
 
 ---
 
-## :arrow_down: Installation
+## ⬇️ Installation
 
-### :snake: PIP
+### 🐍 PIP
 
-`pip install funccacher --extra-index-url https://__token__:<your_personal_token>@gitlab.com/api/v4/projects/{{cookiecutter.package_registry_repository_id}}/packages/pypi/simple`
+```bash
+pip install {{cookiecutter.package_name}} --extra-index-url https://__token__:<your_personal_token>@{{gitlab_host}}/api/v4/projects/{{cookiecutter.package_registry_repository_id}}/packages/pypi/simple
+```
 
 where:
 
@@ -17,13 +19,24 @@ where:
   read_package_registry (for example 5WJpU5v_ms53z6xDt_nG)
 
 > full example:
-> `pip install funccacher --extra-index-url https://Ilya:5WJpU5v_ms53z6xDt_nG@gitlab.com/api/v4/projects/{{cookiecutter.package_registry_repository_id}}/packages/pypi/simple`
+>
+> ```bash
+> pip install {{cookiecutter.package_name}} --extra-index-url https://Ilya:5WJpU5v_ms53z6xDt_nG@{{gitlab_host}}/api/v4/projects/{{cookiecutter.package_registry_repository_id}}/packages/pypi/simple
+> ```
 
-### :honey_pot: Poetry
+### 🍯 Poetry
 
-1. `poetry config repositories.gitlab https://gitlab.com/api/v4/projects/{{cookiecutter.package_registry_repository_id}}/packages/pypi/simple`
+#### 1. Add gitlab repository to your poetry config
 
-2. `poetry config http-basic.gitlab gitlab-ci-token <your_personal_token>`
+```bash
+poetry config repositories.gitlab https://{{gitlab_host}}/api/v4/projects/{{cookiecutter.package_registry_repository_id}}/packages/pypi/simple --local
+```
+
+#### 2. Add gitlab personal access token to your poetry config
+
+```bash
+poetry config http-basic.gitlab gitlab-ci-token <your_personal_token> --local
+```
 
 where:
 
@@ -31,21 +44,26 @@ where:
   read_package_registry (for example 5WJpU5v_ms53z6xDt_nG)
 
 full example:
-`poetry config http-basic.gitlab gitlab-ci-token 5WJpU5v_ms53z6xDt_nG`
 
-3. Add to your pyproject.toml
+```bash
+poetry config http-basic.gitlab gitlab-ci-token 5WJpU5v_ms53z6xDt_nG
+```
+
+#### 3. Add gitlab repository to your pyproject.toml
 
 ```toml
 [[tool.poetry.source]]
 name = "gitlab"
-url = "https://gitlab.com/api/v4/projects/{{cookiecutter.package_registry_repository_id}}/packages/pypi/simple/"
+url = "https://{{gitlab_host}}/api/v4/projects/{{cookiecutter.package_registry_repository_id}}/packages/pypi/simple/"
 ```
 
-> the url will change is package register will change
+#### 4. Install package
 
-4. Install command: `poetry add funccacher --source gitlab`
+```bash
+poetry add {{cookiecutter.package_name}} --source gitlab
+```
 
-## :cake: Usage
+## 🎂 Usage
 
 ```python
 """ Rock Paper Scissors
@@ -87,6 +105,6 @@ while (1 < 2):
         print("You win!")
 ```
 
-## :tophat: Contributing
+## 🎩 Contributing
 
 Read our [guide](CONTRIBUTING.md) to contribute.
