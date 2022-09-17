@@ -6,7 +6,7 @@
 
 ## ⬇️ Installation
 
-### 🔑 Get access token for {{cookiecutter.package_registry_repository_name}} repository
+### 🔑 Get access token for `{{cookiecutter.package_registry_repository_name}}` repository
 
 ### 🐍 PIP
 
@@ -18,7 +18,7 @@ where:
 
 - \_\_token\_\_ - your gitlab username (for example ilya)
 - <your_personal_token> - your token with access to
-  {{cookiecutter.package_registry_repository_name}} repository (for example 5WJpU5v_ms53z6xDt_nG)
+  `{{cookiecutter.package_registry_repository_name}}` repository (for example 5WJpU5v_ms53z6xDt_nG)
 
 > full example:
 >
@@ -43,7 +43,7 @@ poetry config http-basic.gitlab gitlab-ci-token <your_personal_token> --local
 where:
 
 - <your_personal_token> - your token with access to
-  {{cookiecutter.package_name}} repository (for example 5WJpU5v_ms53z6xDt_nG)
+  `{{cookiecutter.package_registry_repository_name}}` repository (for example 5WJpU5v_ms53z6xDt_nG)
 
 full example:
 
