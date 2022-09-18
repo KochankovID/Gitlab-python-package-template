@@ -37,7 +37,8 @@ branch = "main"
 hvcs = "gitlab"
 build_command = "poetry build"
 upload_to_pypi = false
-repository = "gitlag"
+repository = "gitlab"
+commit_parser = "emoji_parser"
 repository_url = "https://{{cookiecutter.gitlab_host}}/api/v4/projects/{{cookiecutter.package_registry_repository_id}}/packages/pypi"
 
 [tool.pylint.'MASTER']

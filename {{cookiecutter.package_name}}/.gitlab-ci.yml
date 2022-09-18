@@ -10,6 +10,7 @@ stages:
 image: python:latest
 
 variables:
+  GIT_STRATEGY: clone
   PIP_CACHE_DIR: $CI_PROJECT_DIR/.cache/pip # Set folder in working dir for cache
   PRE_COMMIT_HOME: ${CI_PROJECT_DIR}/.cache/pre-commit # Set folder in working dir for cache
   TOX_TESTENV_PASSENV: PIP_CACHE_DIR PRE_COMMIT_HOME # For cache the dependencies
