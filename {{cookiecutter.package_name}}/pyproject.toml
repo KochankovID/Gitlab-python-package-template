@@ -33,7 +33,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.semantic_release]
 version_toml = ["pyproject.toml:tool.poetry.version"]
-branch = "main"
+branch = "{{cookiecutter.release_branch}}"
 hvcs = "gitlab"
 build_command = "poetry build"
 upload_to_pypi = false
