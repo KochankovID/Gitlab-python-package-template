@@ -44,21 +44,26 @@ pre-commit install
 pre-commit run -a
 ```
 
+## 😊 Emoji Commit Messages
+
+This project uses [gitmoji](https://gitmoji.dev/) for emoji commit messages. 
+It's a great way to add some fun to your commits and make them more readable.
+
+`Python Semantic Release` uses gitmoji to generate changelog, release notes and
+version number. 
+
+**So, please, use gitmoji in your commit messages.**
+
 ## 🚀 Deploy to GitLab Package Registry
 
 ### Add gitlab deploy token to your poetry config
 
 ```bash
-poetry config http-basic.gitlab gitlab-ci-token <your_personal_token> --local
+poetry config http-basic.gitlab $GL_USERNAME $GL_TOKEN --local
 ```
 
-where:
-
-- <your_personal_token> - is your Deploy tokens with access to
-  read_package_registry (for example 5WJpU5v_ms53z6xDt_nG)
-
-full example:
+### Build and deploy package
 
 ```bash
-poetry config http-basic.gitlab gitlab-ci-token 5WJpU5v_ms53z6xDt_nG
+semantic-release publish
 ```
