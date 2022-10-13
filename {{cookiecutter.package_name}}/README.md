@@ -9,7 +9,7 @@
 ### 🔑 Get access token for `{{cookiecutter.package_registry_repository_name}}` repository
 
 > Get personal access token for python-package-index repository
-> from [GitLab](https://gitlab.amazmetest.ru/-/profile/personal_access_tokens)
+> from [GitLab](https://{{cookiecutter.gitlab_host}}/-/profile/personal_access_tokens)
 
 ```bash
 export GL_USERNAME=<your_gitlab_username> # <- your gitlab username
