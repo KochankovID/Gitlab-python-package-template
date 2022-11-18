@@ -32,3 +32,26 @@ project with gitlab ci/cd included.
 2. `cookiecutter https://github.com/KochankovID/Gitlab-python-package-template.git`
 3. Fill ci/cd variables
 4. ✨
+
+## ✨ Features
+
+- [x] GitLab CI/CD
+- - [x] Linters (pre-commit)
+- - - [x] Trailing-whitespace
+- - - [x] Pyupgrade
+- - - [x] Prettier
+- - - [x] Isort
+- - - [x] Black
+- - - [x] Flake 8
+- - - [x] Mypy
+- - - [x] Pylint
+- - - [x] Docstring formatter
+- - - [x] Autoflake
+- - - [x] Poetry check
+- - [x] Tests
+- - [x] Release (tag version bumping)
+- - [ ] Documentation (TODO)
+- [x] Pre-commit hooks
+- [x] Readme
+- [x] Contributing
+- [x] License
