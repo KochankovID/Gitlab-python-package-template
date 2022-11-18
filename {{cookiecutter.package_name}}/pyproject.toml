@@ -38,7 +38,7 @@ hvcs = "gitlab"
 build_command = "poetry build"
 upload_to_pypi = false
 repository = "gitlab"
-commit_parser = "emoji_parser"
+commit_parser = "semantic_release.history.emoji_parser"
 repository_url = "https://{{cookiecutter.gitlab_host}}/api/v4/projects/{{cookiecutter.package_registry_repository_id}}/packages/pypi"
 
 [tool.pylint.'MASTER']
