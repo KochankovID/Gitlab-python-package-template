@@ -15,16 +15,12 @@ project with gitlab ci/cd included.
 
 > You need to set these variables in the repository settings.
 
-- **PAKAGE_REGISTRY** - url on package registry. Needed for package uploading
-  from ci/cd.
-  > You can take it from pyproject.toml after project generation
-  > _tool.semantic_release.repository_url_
-- **GL_TOKEN** - personal access token for GitLab. Needed for making version
+- **`GL_TOKEN`** - personal access token for GitLab. Needed for making version
   bumping commits from ci/cd.
-- **DEPLOY_TOKEN_NAME** - Name of the access token for package registry. Needed for package uploading
-  from ci/cd.
-- **DEPLOY_TOKEN** - The access token for package registry. Needed for package uploading
-  from ci/cd.
+- **`REPOSITORY_USERNAME`** - Name of the access token for package registry.
+  Needed for package uploading from ci/cd.
+- **`REPOSITORY_PASSWORD`** - The access token for package registry. Needed for
+  package uploading from ci/cd.
 
 ## 🧸 Summarise
 
@@ -36,21 +32,47 @@ project with gitlab ci/cd included.
 ## ✨ Features
 
 - [x] GitLab CI/CD
-- - [x] Linters (pre-commit)
-- - - [x] Trailing-whitespace
-- - - [x] Pyupgrade
-- - - [x] Prettier
-- - - [x] Isort
-- - - [x] Black
-- - - [x] Flake 8
-- - - [x] Mypy
-- - - [x] Pylint
-- - - [x] Docstring formatter
-- - - [x] Autoflake
-- - - [x] Poetry check
-- - [x] Tests
-- - [x] Release (tag version bumping)
-- - [ ] Documentation (TODO)
+-
+    - [x] Linters (pre-commit)
+-
+    -
+        - [x] Trailing-whitespace
+-
+    -
+        - [x] Pyupgrade
+-
+    -
+        - [x] Prettier
+-
+    -
+        - [x] Isort
+-
+    -
+        - [x] Black
+-
+    -
+        - [x] Flake 8
+-
+    -
+        - [x] Mypy
+-
+    -
+        - [x] Pylint
+-
+    -
+        - [x] Docstring formatter
+-
+    -
+        - [x] Autoflake
+-
+    -
+        - [x] Poetry check
+-
+    - [x] Tests
+-
+    - [x] Release (tag version bumping)
+-
+    - [ ] Documentation (TODO)
 - [x] Pre-commit hooks
 - [x] Readme
 - [x] Contributing

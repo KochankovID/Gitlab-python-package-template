@@ -34,9 +34,10 @@ build-backend = "poetry.core.masonry.api"
 [tool.semantic_release]
 version_toml = ["pyproject.toml:tool.poetry.version"]
 branch = "{{cookiecutter.release_branch}}"
+version_source = "tag"
 hvcs = "gitlab"
 build_command = "poetry build"
-upload_to_pypi = false
+upload_to_repository = true
 repository = "gitlab"
 commit_parser = "semantic_release.history.emoji_parser"
 repository_url = "https://{{cookiecutter.gitlab_host}}/api/v4/projects/{{cookiecutter.package_registry_repository_id}}/packages/pypi"
